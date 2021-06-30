@@ -1,0 +1,15 @@
+.formulario {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 2rem;
+  }
+
+  .tipo {
+    padding: 1rem;
+  }
+
+  .valor{
+    padding: 1rem;
+  }
