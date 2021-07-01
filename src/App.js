@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
-import { Add } from './component/Adicionar/Adicionar'
-
-
-
+import { Add, Listar } from './component'
 
 function App() {
+      const [state, setState] = useState([])
+      const onSuccess = (item) => setState((prev) =>[...prev, item])
  return(
     <div className="App">
           <h1>Gerenciamento de Contas</h1>
 
-          <Add/>
+          <Add onSuccess={onSuccess}/>
+          <Listar bills = {state} />
+
     </div>
  )
 

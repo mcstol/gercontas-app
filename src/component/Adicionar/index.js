@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import './Adicionar.css'
+import './style.css'
 
 
-export const Add = () => {
+export const Add = ({onSuccess}) => {
 
     const [tipo, setTipo ] = useState('')
     const [valor, setValor ] = useState('')
@@ -17,11 +17,11 @@ export const Add = () => {
 
     const handleSubmit = (event) =>{
         event.preventDefault()
-        const data = {
-            'type': tipo,
-            'value': valor
+        if(tipo && valor){
+            onSuccess({tipo, valor})
+            setTipo('')
+            setValor('')
         }
-        console.log(data)
     }
 
     return(
