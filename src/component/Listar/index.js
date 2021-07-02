@@ -8,9 +8,11 @@ export  const Listar = ({ bills }) =>{
         <section>
           <h2>Contas</h2>
           <table>
-            {bills.map((item,index) =>(
-              <tr key={index}><td>{item.tipo}</td><td>{item.valor}</td></tr>
-            ))}
+            <tbody>
+              {bills.map((item,index) =>(
+                <tr key={index}><td>{item.type}</td><td>{item.value}</td></tr>
+              ))}
+            </tbody>
           </table>
           <ul>
           </ul>
