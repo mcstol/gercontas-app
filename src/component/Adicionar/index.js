@@ -4,23 +4,23 @@ import './style.css'
 
 export const Add = ({onSuccess}) => {
 
-    const [tipo, setTipo ] = useState('')
-    const [valor, setValor ] = useState('')
+    const [type, setType ] = useState('')
+    const [value, setValue ] = useState('')
 
     const handleTipo = (event) => {
-        setTipo( event.target.value)
+        setType( event.target.value)
     }
 
     const handleValor =(event) =>{
-        setValor(event.target.value)
+        setValue(event.target.value)
     }
 
     const handleSubmit = (event) =>{
         event.preventDefault()
-        if(tipo && valor){
-            onSuccess({tipo, valor})
-            setTipo('')
-            setValor('')
+        if(type && value){
+            onSuccess({type, value})
+            setType('')
+            setValue('')
         }
     }
 
@@ -35,7 +35,7 @@ export const Add = ({onSuccess}) => {
                         type= 'text'
                         name='text'
                         placeholder='Digite o tipo da conta'
-                        value={tipo}
+                        value={type}
                         onChange={handleTipo}
                         />
                     </div>
@@ -45,7 +45,7 @@ export const Add = ({onSuccess}) => {
                         type= 'text'
                         name= 'text'
                         placeholder='Digite o valor da conta'
-                        value={valor}
+                        value={value}
                         onChange={handleValor}
                         />
                     </div>
