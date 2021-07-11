@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-import { Add, Listar } from './component'
+import { Add, Listar, FormAtualizar } from './component'
 
 function App() {
       const [state, setState] = useState([])
@@ -45,6 +45,7 @@ function App() {
 
           <Add onSuccess={onSuccess}/>
           <Listar bills = {state} onRemove={onRemove}/>
+          <FormAtualizar/>
 
     </div>
  )
