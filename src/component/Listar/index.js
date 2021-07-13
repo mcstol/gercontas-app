@@ -8,7 +8,7 @@ export const Bills = ({id, type, value, onRemove }) => {
 
   return(
     <tr>
-      <td>{type}</td><td>{value}</td><td><button onClick={onClick}>Remover</button></td>
+     <td>{id}</td> <td>{type}</td><td>{value}</td><td><button onClick={onClick}>Remover</button></td>
     </tr>
   )
 
