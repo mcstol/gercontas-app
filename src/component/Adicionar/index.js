@@ -18,7 +18,21 @@ export const Add = ({onSuccess}) => {
     const handleSubmit = (event) =>{
         event.preventDefault()
         if(type && value){
-            onSuccess({type, value})
+            // onSuccess({type, value})
+
+
+        fetch('http://localhost:3010/contas', {
+              method: 'POST',
+              body: JSON.stringify({type,value}),
+              headers:{
+                    'Content-type': 'application/json; charset=UTF-8',
+              },
+        })
+        .then((response) => response.json())
+        .then((json) => {
+            onSuccess(json)
+        })
+
             setType('')
             setValue('')
         }

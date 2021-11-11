@@ -1,11 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 
- export const FormAtualizar = () => {
+ export const FormAtualizar = ({data}) => {
+     const[ident, setIdent] = useState(data.id)
+     const[type, setType] = useState(data.type)
+     const[value, setValue] = useState(data.value)
 
-    const[ident, setIdent] = useState()
-    const[type, setType] = useState('')
-    const[value, setValue] = useState('')
+    //  const dado = Object.values(data)
+     console.log({data})
+     console.log({
+         ident, type,value
+     })
+     useEffect(() => {
+        if (data.id){
+            setIdent(data.id)
+            setType(data.type)
+            setValue(data.value)
+        }
+     }, [JSON.stringify(data)])
 
     const handleId = (event) =>{
         setIdent(event.target.value)
@@ -21,7 +33,7 @@ import React, { useState } from 'react'
 
 
     const handleSubmit = (event) =>{
-        console.log(ident)
+        console.log({ident})
         // event.preventDefault()
 
         fetch(`http://localhost:3010/contas/${ident}`, {
@@ -33,7 +45,7 @@ import React, { useState } from 'react'
       })
       .then((response) => response.json())
       .then((json) => {
-        console.log(json)
+        console.log({json})
       })
     }
 

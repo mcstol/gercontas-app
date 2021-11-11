@@ -1,20 +1,24 @@
 import React from "react";
 import './style.css'
 
-export const Bills = ({id, type, value, onRemove }) => {
+export const Bills = ({id, type, value, onRemove, onUpdate }) => {
   const onClick = () => onRemove(id)
+  const onAtualizar = () => onUpdate({id, type, value})
 
 
 
   return(
     <tr>
-     <td>{id}</td> <td>{type}</td><td>{value}</td><td><button onClick={onClick}>Remover</button></td>
+     <td>{id}</td> <td>{type}</td><td>{value}</td>
+     <td><button onClick={onAtualizar}>Atualizar</button></td>
+     <td><button onClick={onClick}>Remover</button></td>
+
     </tr>
   )
 
 }
 
-export  const Listar = ({ bills, onRemove }) =>{
+export  const Listar = ({ bills, onRemove, onUpdate }) =>{
       console.log(bills)
       return (
         <section>
@@ -22,7 +26,7 @@ export  const Listar = ({ bills, onRemove }) =>{
           <table>
             <tbody>
               {bills.map((item) =>(
-                <Bills key={item.id} {...item} onRemove={onRemove}/>
+                <Bills key={item.id} {...item} onRemove={onRemove} onUpdate={onUpdate}/>
               ))}
             </tbody>
           </table>

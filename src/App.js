@@ -5,20 +5,12 @@ import { Add, Listar, FormAtualizar } from './component'
 
 function App() {
       const [state, setState] = useState([])
-      const onSuccess = ({type,value}) => {
-            fetch('http://localhost:3010/contas', {
-                  method: 'POST',
-                  body: JSON.stringify({type,value}),
-                  headers:{
-                        'Content-type': 'application/json; charset=UTF-8',
-                  },
-            })
-            .then((response) => response.json())
-            .then((json) => {
-                  setState((prev) =>[...prev, json])
-            })
+      const[data, setData] = useState({})
 
 
+      const onSuccess = (json) => {
+
+            setState((prev) =>[...prev, json])
 
       }
 
@@ -32,6 +24,13 @@ function App() {
             })
 
       }
+      const onUpdate = ({id, type, value}) =>{
+            setData({
+                  id: id,
+                  type: type,
+                  value: value
+            })
+      }
 
       useEffect(() => {
             fetch('http://localhost:3010/contas')
@@ -44,8 +43,8 @@ function App() {
           <h1>Gerenciamento de Contas</h1>
 
           <Add onSuccess={onSuccess}/>
-          <Listar bills = {state} onRemove={onRemove}/>
-          <FormAtualizar/>
+          <Listar bills = {state} onRemove={onRemove} onUpdate ={onUpdate}/>
+          <FormAtualizar data ={data}/>
 
     </div>
  )
